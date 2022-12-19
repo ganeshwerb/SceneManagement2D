@@ -8,7 +8,18 @@ public class BehaviourChange : MonoBehaviour
     [SerializeField] private GameObject startButton;
     private string activeQuadrant = null;
     private string url;
-
+    public static BehaviourChange behaviourChange = null;
+    private void Awake()
+    {
+        if(behaviourChange == null)
+        {
+            behaviourChange = this;
+        }
+        else if(behaviourChange != null)
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         transform.gameObject.SetActive(false);
